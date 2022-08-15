@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { theme } from '../../common/theme';
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
@@ -10,7 +10,7 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   /**
    * 버튼 내용
    */
-  content?: string;
+  label?: string;
   /**
    * 버튼 활성화 상태
    */
@@ -23,20 +23,14 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
 
 function Button({
   property = 'default',
-  content,
+  label,
   state = true,
   fixed = false,
   ...props
 }: ButtonProps) {
   return (
-    <Wrapper
-      property={property}
-      state={state}
-      disabled={!state}
-      fixed={fixed}
-      {...props}
-    >
-      <p>{content}</p>
+    <Wrapper>
+      <button onClick={props.onClick}>{label}</button>
     </Wrapper>
   );
 }
@@ -58,16 +52,40 @@ const handleColorType = (property: 'default' | 'border-line' | 'fill') => {
   }
 };
 
-const Wrapper = styled.button<{
-  property: 'default' | 'border-line' | 'fill';
-  fixed: boolean;
-  state: boolean;
-}>`
+const Wrapper = styled.div`
+  width: 263px;
+  height: 47px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  overflow-y: auto;
-  overflow-x: hidden;
-  height: calc(var(--vh, 1vh) * 100);
-  background-color: ${({ property }) => handleColorType(property)};
+  align-items: center;
+
+  button {
+    transition: ${({ theme }) => theme.transition.onHover};
+    background-color: ${({ theme }) => theme.palette.main.grey};
+    color: ${({ theme }) => theme.palette.main.white};
+    ${({ theme }) => {
+      const selected = theme.palette.main.orange;
+      return css`
+        &:active {
+          background: ${selected};
+        }
+      `;
+    }}
+
+    ${({ theme }) => theme.typo.button.Secondary_T_13_EB}
+    font-weight: 300;
+
+    border-radius: 8px;
+    border: ${({ theme }) => {
+      return css`
+        1px solid ${theme.palette.main.orange};
+      `;
+    }};
+    width: 100%;
+    height: 47px;
+
+    &:hover {
+      background-color: ${({ theme }) => theme.palette.main.orange};
+    }
+  }
 `;

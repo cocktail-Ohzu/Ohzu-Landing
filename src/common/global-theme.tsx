@@ -6,13 +6,12 @@ export const GlobalStyle = createGlobalStyle`
     body {
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
+      font-family: 'Noto Sans KR', sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       box-sizing: border-box; /* 엘리먼트의 box-sizing 값을 border-box로 설정 */
-      background-color: #fafafc;
+      background-color: #121212;
+      color: white;
       /* 바텀시트 작업 중 추가 */
       overflow: hidden;
        // 스크롤바 제거
@@ -27,6 +26,7 @@ export const GlobalStyle = createGlobalStyle`
     }
     html {
       height: 100%;
+      scroll-behavior: smooth;
     }
     a {
       color: inherit;
@@ -51,17 +51,15 @@ export const GlobalStyle = createGlobalStyle`
     button:focus {
       outline: none;
     }
-    input:focus {
-      outline: none;
+
+    &::-webkit-scrollbar {
+      width: 0px;
     }
-    /* react spring bottom sheet */
-    :root {
-      --rsbs-backdrop-bg: rgba(0, 0, 0, 0.7);
-      --rsbs-bg: #fff;
-      --rsbs-handle-bg: hsla(0, 0%, 0%, 0.14);
-      --rsbs-max-w: auto;
-      --rsbs-ml: env(safe-area-inset-left);
-      --rsbs-mr: env(safe-area-inset-right);
-      --rsbs-overlay-rounded: 16px;
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(211, 211, 211, 0.5);
+      border-radius: 3px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: none;
     }
 `;

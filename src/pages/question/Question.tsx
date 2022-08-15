@@ -1,4 +1,6 @@
 import { useNavigate } from 'react-router-dom';
+import Button from '../../components/button/Button';
+import Template from '../../components/Template';
 // import styled from 'styled-components';
 
 function Question() {
@@ -6,10 +8,13 @@ function Question() {
 
   return (
     <>
-      <h1>놀랍게도 메인화면 입니다</h1>
-      <button type="button" onClick={() => navigate('/login')}>
-        로그인
-      </button>
+      <Template variant="질문">
+        {/* <SizedBox /> */}
+        <Button
+          property="border-line"
+          label="나와 맞는 칵테일 추천받으러 레츠고?"
+        ></Button>
+      </Template>
     </>
   );
 }

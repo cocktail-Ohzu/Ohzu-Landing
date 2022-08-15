@@ -11,12 +11,8 @@ declare module 'styled-components' {
         white: '#FFFFFF';
       };
     };
-    radius: {
-      small: '8px';
-      medium: '12px';
-      large: '24px';
-    };
     transition: {
+      onHover: '0.125s all ease-in';
       onFocus: '0.125s all ease-in';
     };
     typo: {
@@ -25,15 +21,8 @@ declare module 'styled-components' {
         TabName_T_21_EB: string;
         HomeTitle_T_24_EB: string;
         HomeSubtitle_T_16_EB: string;
-        GraphNum_T_21_EB: string;
-        GraphSub_S_12_M: string;
+        Footer_S_12_M: string;
         EmptyText_S_16_M: string;
-      };
-      input: {
-        Title_T_24_EB: string;
-        TextField_T_16_EB: string;
-        TextField_Num_T_21_EB: string;
-        TextMessage_S_12_M: string;
       };
       text: {
         T_21_EB: string;
@@ -43,12 +32,6 @@ declare module 'styled-components' {
         S_14_M: string;
         T_12_EB: string;
         S_12_M: string;
-      };
-      popup: {
-        T_24_EB: string;
-        Title_T_21_EB: string;
-        S_15_R: string;
-        Sub_S_14_R: string;
       };
       button: {
         Primary_T_15_EB: string;
