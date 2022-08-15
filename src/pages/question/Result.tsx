@@ -1,22 +1,26 @@
 /* eslint-disable prettier/prettier */
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import Button from '../../components/button/Button';
-import Template from '../../components/Template';
+import Template from '../../components/common/Template';
 import { IResult } from '../../types/IResult';
 import { ReactComponent as AppStore } from '../../assets/icons/on_appstore_line.svg';
 import { ReactComponent as PlayStore } from '../../assets/icons/on_playstore_line.svg';
+import { IAnswer } from '../../types/IAnswer';
+import { axiosRequest } from '../../apis/axios';
 // import styled from 'styled-components';
 
 function Result() {
   const navigate = useNavigate();
+  const { state } = useLocation();
   const [result, setResult] = useState<IResult>();
 
   useEffect(() => {
     //!!!!실 서버 데이터!!!!
+    // console.log(state);
     // axiosRequest
-    //   .post<IResult>('/landingpage')
+    //   .post<IResult>('/landingpage', state)
     //   .then((res) => setResult(res.data));
 
     //더미 데이터 지정, 삭제필요
@@ -33,7 +37,11 @@ function Result() {
       "https://ohzu.s3.ap-northeast-2.amazonaws.com/%EB%A1%9C%EB%B8%8C+%EB%A1%9C%EC%9D%B42.png",
     });
 
-    console.log(result);
+    // try {
+    //   document.body.scrollTop = 0;
+    // } catch (err) {
+    //   console.log(err);
+    // }
   }, []);
 
   return (

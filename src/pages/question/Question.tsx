@@ -6,16 +6,24 @@ import Button from '../../components/button/Button';
 import SelectButton from '../../components/button/SelectButton';
 import QuestionBox from '../../components/question/QuestionBox';
 import QuestionList from '../../components/question/QuestionBox';
-import Template from '../../components/Template';
+import ScrollProgress from '../../components/scroll/ScrollProgress';
+import Template from '../../components/common/Template';
+import { EMbti, IAnswer } from '../../types/IAnswer';
 import { IQuestion } from '../../types/IQuestion';
+import { TSelect } from '../../types/TSelect';
 // import styled from 'styled-components';
 
 function Question() {
   const navigate = useNavigate();
-  const [questions, setQuestions] = useState<IQuestion[]>();
-  const [answers, setAnswers] = useState<string>();
+  const [questions, setQuestions] = useState<IQuestion[]>([]);
+  const [answers, setAnswers] = useState<TSelect[]>([]);
 
   useEffect(() => {
+    try {
+      document.body.scrollTop = 0;
+    } catch (err) {
+      console.log(err);
+    }
     //!!!!실 서버 데이터!!!!
     // axiosRequest
     //   .get<IQuestion>('/landingpage')
@@ -72,39 +80,81 @@ function Question() {
         attribute: 'EI',
       },
     ]);
-
-    setAnswers('0'.repeat(questions?.length ?? 0));
-
-    console.log(questions);
-    console.log(answers);
   }, []);
 
+  const handleSubmit = () => {
+    let data: string = answers
+      .map((elem, index) => {
+        /* 선택 안함 */
+        if (elem == -1) {
+          console.log('아직 선택 하지 않은 항목이 있음');
+        } else if (elem == 1) {
+          /* 예 선택 */
+          return questions[index].attribute[0] ?? 'X';
+        } else if (elem == 0) {
+          /* 아니오 선택 */
+          return questions[index].attribute[1] ?? 'X';
+        }
+        return 'X';
+      })
+      .toString()
+      .replaceAll(',', '');
+
+    console.log(data);
+    if (data.indexOf('X') > -1) {
+      console.log('잘못된 요청');
+      return;
+    }
+
+    let prop: IAnswer = {
+      data: data,
+    };
+
+    navigate('/result', { state: JSON.stringify(prop) });
+  };
+
   return (
-    <Template variant="질문">
-      <Wrapper>
-        {/* <SizedBox /> */}
-        {questions?.map((elem, index) => {
-          return (
-            <QuestionBox
-              key={index}
-              elem={questions[index]}
-              handler={setAnswers}
-            ></QuestionBox>
-          );
-        })}
-        <Button
-          onClick={() => {
-            navigate('/result');
-          }}
-        ></Button>
-      </Wrapper>
-    </Template>
+    <>
+      <Template variant="질문">
+        <ScrollProgress />
+        <Wrapper>
+          {/* <SizedBox /> */}
+          {questions?.map((elem, index) => {
+            return (
+              <QuestionBox
+                key={index}
+                elem={questions[index]}
+                answers={answers}
+                index={index}
+                handler={setAnswers}
+              ></QuestionBox>
+            );
+          })}
+          <SubmitContainer>
+            <Button
+              onClick={() => {
+                handleSubmit();
+              }}
+              label={'결과 확인하기'}
+            ></Button>
+          </SubmitContainer>
+        </Wrapper>
+      </Template>
+    </>
   );
 }
 
 export default Question;
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 53px;
   margin: 0 29px 0 29px;
+`;
+
+const SubmitContainer = styled.div`
+  margin-top: 100px;
+  margin-bottom: 50px;
 `;

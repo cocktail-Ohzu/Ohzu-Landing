@@ -9,4 +9,5 @@ export enum EMbti {
   N,
   T,
   F,
+  X,
 }

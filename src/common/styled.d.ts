@@ -14,6 +14,8 @@ declare module 'styled-components' {
     transition: {
       onHover: '0.125s all ease-in';
       onFocus: '0.125s all ease-in';
+      onSelect: '0.3s all ease-in';
+      onScroll: '0.15s all linear';
     };
     typo: {
       fixed: {

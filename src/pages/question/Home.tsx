@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../../components/button/Button';
-import Template from '../../components/Template';
+import Template from '../../components/common/Template';
 import logo from '../../images/logo.png';
 
 function Home() {

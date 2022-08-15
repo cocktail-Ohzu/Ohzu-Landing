@@ -1,18 +1,40 @@
-import React, { HTMLAttributes, useState } from 'react';
+import React, { HTMLAttributes, useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { theme } from '../../common/theme';
+import { EMbti } from '../../types/IAnswer';
 import { IQuestion } from '../../types/IQuestion';
+import { TSelect } from '../../types/TSelect';
 import Button from '../button/Button';
 import SelectButton from '../button/SelectButton';
 
 interface QuestionProps extends HTMLAttributes<HTMLButtonElement> {
-  elem?: IQuestion | null;
-  handler?: Function | React.Dispatch<React.SetStateAction<String>>;
+  elem: IQuestion;
+  answers: TSelect[];
+  index: number;
+  handler: React.Dispatch<React.SetStateAction<TSelect[]>>;
 }
 
-function QuestionBox({ elem, handler, ...props }: QuestionProps) {
+function QuestionBox({
+  elem,
+  index,
+  answers,
+  handler,
+  ...props
+}: QuestionProps) {
   const navigate = useNavigate();
+  const [answer, setAnswer] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    if (answer == true) answers[index] = 1;
+    else if (answer == false) answers[index] = 0;
+    else answers[index] = -1;
+    console.log(answers);
+  }, [answer]);
+
+  const handleState = (state: boolean) => {
+    setAnswer(state);
+  };
 
   if (elem == null) return null;
   return (
@@ -25,9 +47,17 @@ function QuestionBox({ elem, handler, ...props }: QuestionProps) {
           <p>{elem.title}</p>
         </Title>
         <ButtonWrapper>
-          <SelectButton label={'예'}></SelectButton>
-          {/* <SizedBox /> */}
-          <SelectButton label={'아니오'}></SelectButton>
+          <SelectButton
+            label={'예'}
+            onClick={() => handleState(true)}
+            isSelected={answer}
+          ></SelectButton>
+          <SizedBox />
+          <SelectButton
+            label={'아니오'}
+            onClick={() => handleState(false)}
+            isSelected={answer == null ? null : !answer}
+          ></SelectButton>
         </ButtonWrapper>
       </Wrapper>
     </>
