@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { ReactComponent as Instagram } from '../assets/icons/instagram.svg';
-import { ReactComponent as AppStroe } from '../assets/icons/appstore.svg';
-import { ReactComponent as PlayStore } from '../assets/icons/playstore.svg';
-import { ReactComponent as Github } from '../assets/icons/github.svg';
+import { ReactComponent as Instagram } from '../../assets/icons/instagram.svg';
+import { ReactComponent as AppStroe } from '../../assets/icons/appstore.svg';
+import { ReactComponent as PlayStore } from '../../assets/icons/playstore.svg';
+import { ReactComponent as Github } from '../../assets/icons/github.svg';
 
 const Footer = () => {
   return (
