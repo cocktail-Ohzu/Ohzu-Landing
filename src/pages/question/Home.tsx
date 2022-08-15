@@ -13,21 +13,31 @@ function Home() {
 
   return (
     <Template variant="홈">
-      <OhzuLogo>
-        <img src={logo}></img>
-      </OhzuLogo>
-      {/* <SizedBox /> */}
-      <Button
-        property="border-line"
-        label="나와 맞는 칵테일 추천받으러 레츠고?"
-        onClick={handleButtonClick}
-      ></Button>
-      <SizedBox />
+      <Wrapper>
+        <OhzuLogo>
+          <img src={logo}></img>
+        </OhzuLogo>
+        {/* <SizedBox /> */}
+        <Button
+          property="border-line"
+          label="나와 맞는 칵테일 추천받으러 레츠고?"
+          onClick={handleButtonClick}
+        ></Button>
+        <SizedBox />
+      </Wrapper>
     </Template>
   );
 }
 
 export default Home;
+
+const Wrapper = styled.div`
+  height: calc(var(--vh, 1vh) * 70);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const OhzuLogo = styled.div`
   height: 400px;

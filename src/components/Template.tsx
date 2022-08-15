@@ -20,19 +20,19 @@ function Template({ children, variant }: TemplateProps) {
 export default Template;
 
 const Wrapper = styled.div`
-  height: calc(var(--vh, 1vh) * 100);
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  overflow-y: scroll;
 `;
 
 const Container = styled.div`
+  width: 375px;
   background-color: #121212;
   /* pc 모바일 목업 화면 */
-  width: auto;
   box-sizing: content-box;
   /* 탭바 */
-  position: relative;
   /* 임시 높이 확인용 보더 */
   // border: 1px solid white;
 `;

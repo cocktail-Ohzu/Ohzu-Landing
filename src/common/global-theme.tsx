@@ -13,7 +13,8 @@ export const GlobalStyle = createGlobalStyle`
       background-color: #121212;
       color: white;
       /* 바텀시트 작업 중 추가 */
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: scroll;
        // 스크롤바 제거
       -ms-overflow-style: none;
     }
