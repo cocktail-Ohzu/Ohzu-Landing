@@ -1,11 +1,8 @@
 import React, { HTMLAttributes, useEffect, useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
-import styled, { css } from 'styled-components';
-import { theme } from '../../common/theme';
-import { EMbti } from '../../types/IAnswer';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 import { IQuestion } from '../../types/IQuestion';
 import { TSelect } from '../../types/TSelect';
-import Button from '../button/Button';
 import SelectButton from '../button/SelectButton';
 
 interface QuestionProps extends HTMLAttributes<HTMLButtonElement> {

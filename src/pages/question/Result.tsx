@@ -14,6 +14,12 @@ function Result() {
   const [result, setResult] = useState<IResult>();
 
   useEffect(() => {
+    try {
+      document.body.scrollTop = 0;
+    } catch (err) {
+      console.log(err);
+    }
+
     console.log(state);
     axiosRequest
       .post<IResult>('/landingpage/result', state)
@@ -32,8 +38,13 @@ function Result() {
             <img src={result?.cocktail_url}></img>
           </ResultImage>
           <Detail>
-            {result?.desc.split('||').map((elem, index) => {
-              return <li key={index}>{elem}</li>;
+            {result?.desc.split(' ||').map((elem, index) => {
+              return (
+                <div>
+                  <li></li>
+                  <p key={index}>{elem}</p>
+                </div>
+              );
             })}
           </Detail>
           <Title>
@@ -109,10 +120,11 @@ const Detail = styled.div`
   margin-bottom: 74px;
   border-radius: 8px;
   padding: 30px 18px 30px 18px;
-  & li {
-    list-style-position: inside;
-    text-indent: -20px;
-    padding-left: 20px;
+  & div {
+    & li {
+      margin-right: -3px;
+    }
+    display: flex;
     ${({ theme }) => theme.typo.text.T_16_EB}
     line-height: 150%;
     font-weight: 300;
