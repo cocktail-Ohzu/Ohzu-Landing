@@ -7,11 +7,14 @@ import { ReactComponent as AppStore } from '../../assets/icons/on_appstore_line.
 import { ReactComponent as PlayStore } from '../../assets/icons/on_playstore_line.svg';
 import { axiosRequest } from '../../apis/axios';
 import AnimatedPage from '../../components/common/AnimatedPage';
+import { ToastsStore } from 'react-toasts';
 
 function Result() {
   const navigate = useNavigate();
   const { state } = useLocation();
   const [result, setResult] = useState<IResult>();
+  const playstoreUrl = '';
+  const appstoreUrl = '';
 
   useEffect(() => {
     try {
@@ -21,11 +24,23 @@ function Result() {
       console.log(err);
     }
 
-    console.log(state);
-    axiosRequest
-      .post<IResult>('/landingpage/result', state)
-      .then((res) => setResult(res.data));
+    if (!state || state == null) {
+      navigate('/');
+      useToast('잘못된 접근입니다');
+    } else {
+      axiosRequest
+        .post<IResult>('/landingpage/result', state)
+        .then((res) => setResult(res.data));
+    }
   }, []);
+
+  const useToast = (msg: string) => {
+    ToastsStore.info(msg);
+  };
+
+  const openInNewTab = (url: string) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <AnimatedPage>
@@ -39,7 +54,7 @@ function Result() {
             <img src={result?.cocktail_url}></img>
           </ResultImage>
           <Detail>
-            {result?.desc.split(' ||').map((elem, index) => {
+            {result?.desc.split('||').map((elem, index) => {
               return (
                 <div key={index}>
                   <li></li>
@@ -68,8 +83,22 @@ function Result() {
             {/* <p>오쥬 다운 받으러 가기~!</p> */}
           </SubTitle>
           <AppStoreWrapper>
-            <AppStore width={232} height={67} />
-            <PlayStore width={232} height={67} />
+            <AppStore
+              width={232}
+              height={67}
+              onClick={() => {
+                // openInNewTab(appstoreUrl);
+                useToast('준비 중입니다 :)');
+              }}
+            />
+            <PlayStore
+              width={232}
+              height={67}
+              onClick={() => {
+                // openInNewTab(playstoreUrl);
+                useToast('준비 중입니다 :)');
+              }}
+            />
           </AppStoreWrapper>
         </Wrapper>
       </Template>
@@ -132,7 +161,7 @@ const Detail = styled.div`
     color: ${({ theme }) => theme.palette.main.white};
     margin-bottom: 15px;
   }
-  & li:last-child {
+  & div:last-child {
     margin-bottom: 0;
   }
 `;
@@ -188,6 +217,7 @@ const SubTitle = styled.div`
 
 const AppStoreWrapper = styled.div`
   display: flex;
+  cursor: pointer;
   align-items: center;
   // flex-direction: column;
   gap: 10px;

@@ -9,13 +9,16 @@ const Footer = () => {
     <Wrapper>
       <p>© Ohzu. 2022 All rights reserved</p>
       <SecondRow>
-        <a href="#" target="_blank" rel="noreferrer noopener">
+        {/* <a href="" target="_blank" rel="noreferrer noopener"> */}
+        <a>
           <AppStroe />
         </a>
-        <a href="#" target="_blank" rel="noreferrer noopener">
+        {/* <a href="" target="_blank" rel="noreferrer noopener"> */}
+        <a>
           <PlayStore />
         </a>
-        <a href="#" target="_blank" rel="noreferrer noopener">
+        {/* <a href="" target="_blank" rel="noreferrer noopener"> */}
+        <a>
           <Instagram />
         </a>
         <a
