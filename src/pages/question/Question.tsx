@@ -10,6 +10,7 @@ import { IAnswer } from '../../types/IAnswer';
 import { IQuestion, IQuestionList } from '../../types/IQuestion';
 import { TSelect } from '../../types/TSelect';
 import AnimatedPage from '../../components/common/AnimatedPage';
+import { ToastsStore } from 'react-toasts';
 // import styled from 'styled-components';
 
 function Question() {
@@ -18,9 +19,14 @@ function Question() {
   const [answers, setAnswers] = useState<TSelect[]>([]);
   const requestUrl = '/landingpage/question';
 
+  const useToast = () => {
+    ToastsStore.info('아직 선택하지 않은 선택지가 있습니다');
+  };
+
   useEffect(() => {
     try {
       document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
     } catch (err) {
       console.log(err);
     }
@@ -56,6 +62,7 @@ function Question() {
     // console.log(data);
     if (data.indexOf('X') > -1) {
       console.log('잘못된 요청');
+      useToast();
       return;
     }
 

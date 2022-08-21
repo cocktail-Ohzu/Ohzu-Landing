@@ -4,11 +4,18 @@ import Result from './pages/question/Result';
 import Question from './pages/question/Question';
 import NotFound from './pages/common/NotFound';
 import { AnimatePresence } from 'framer-motion';
+import {
+  ToastsContainer,
+  ToastsContainerPosition,
+  ToastsStore,
+} from 'react-toasts';
+import CustomToastContainer from './components/common/CustomToastContainer';
 
 function App() {
   const location = useLocation();
   return (
     <AnimatePresence>
+      <CustomToastContainer />
       <Routes key={location.pathname} location={location}>
         <Route path="/" element={<Home />} />
         <Route path="/question" element={<Question />} />
