@@ -1,5 +1,7 @@
+export interface IQuestionList {
+  data: IQuestion[];
+}
 export interface IQuestion {
-  question_id: number;
-  title: string;
+  question: string;
   attribute: string;
 }

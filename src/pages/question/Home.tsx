@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../../components/button/Button';
+import AnimatedPage from '../../components/common/AnimatedPage';
 import Template from '../../components/common/Template';
 import logo from '../../images/logo.png';
 
@@ -12,20 +13,22 @@ function Home() {
   };
 
   return (
-    <Template variant="홈">
-      <Wrapper>
-        <OhzuLogo>
-          <img src={logo}></img>
-        </OhzuLogo>
-        {/* <SizedBox /> */}
-        <Button
-          property="border-line"
-          label="나와 맞는 칵테일 추천받으러 레츠고?"
-          onClick={handleButtonClick}
-        ></Button>
-        <SizedBox />
-      </Wrapper>
-    </Template>
+    <AnimatedPage>
+      <Template variant="홈">
+        <Wrapper>
+          <OhzuLogo>
+            <img src={logo}></img>
+          </OhzuLogo>
+          {/* <SizedBox /> */}
+          <Button
+            property="border-line"
+            label="나와 맞는 칵테일 추천받으러 레츠고?"
+            onClick={handleButtonClick}
+          ></Button>
+          <SizedBox />
+        </Wrapper>
+      </Template>
+    </AnimatedPage>
   );
 }
 

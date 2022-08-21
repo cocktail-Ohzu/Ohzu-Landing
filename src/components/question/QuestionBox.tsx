@@ -29,7 +29,7 @@ function QuestionBox({
     if (answer == true) answers[index] = 1;
     else if (answer == false) answers[index] = 0;
     else answers[index] = -1;
-    console.log(answers);
+    // console.log(answers);
   }, [answer]);
 
   const handleState = (state: boolean) => {
@@ -41,10 +41,10 @@ function QuestionBox({
     <>
       <Wrapper>
         <Order>
-          <p>{elem.question_id}/8</p>
+          <p>{index + 1}</p>
         </Order>
         <Title>
-          <p>{elem.title}</p>
+          <p>{elem.question}</p>
         </Title>
         <ButtonWrapper>
           <SelectButton
