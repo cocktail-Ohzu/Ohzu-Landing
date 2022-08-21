@@ -26,6 +26,7 @@ function Question() {
   useEffect(() => {
     try {
       document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
     } catch (err) {
       console.log(err);
     }

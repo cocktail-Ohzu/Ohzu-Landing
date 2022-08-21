@@ -16,6 +16,7 @@ function Result() {
   useEffect(() => {
     try {
       document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
     } catch (err) {
       console.log(err);
     }
@@ -40,9 +41,9 @@ function Result() {
           <Detail>
             {result?.desc.split(' ||').map((elem, index) => {
               return (
-                <div>
+                <div key={index}>
                   <li></li>
-                  <p key={index}>{elem}</p>
+                  <p>{elem}</p>
                 </div>
               );
             })}
