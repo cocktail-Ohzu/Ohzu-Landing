@@ -3,20 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { axiosRequest } from '../../apis/axios';
 import Button from '../../components/button/Button';
-import SelectButton from '../../components/button/SelectButton';
 import QuestionBox from '../../components/question/QuestionBox';
-import QuestionList from '../../components/question/QuestionBox';
 import ScrollProgress from '../../components/scroll/ScrollProgress';
 import Template from '../../components/common/Template';
-import { EMbti, IAnswer } from '../../types/IAnswer';
-import { IQuestion } from '../../types/IQuestion';
+import { IAnswer } from '../../types/IAnswer';
+import { IQuestion, IQuestionList } from '../../types/IQuestion';
 import { TSelect } from '../../types/TSelect';
+import AnimatedPage from '../../components/common/AnimatedPage';
 // import styled from 'styled-components';
 
 function Question() {
   const navigate = useNavigate();
   const [questions, setQuestions] = useState<IQuestion[]>([]);
   const [answers, setAnswers] = useState<TSelect[]>([]);
+  const requestUrl = '/landingpage/question';
 
   useEffect(() => {
     try {
@@ -24,63 +24,16 @@ function Question() {
     } catch (err) {
       console.log(err);
     }
-    //!!!!실 서버 데이터!!!!
-    // axiosRequest
-    //   .get<IQuestion>('/landingpage')
-    //   .then((res) => setQuestions(res.data));
 
-    //더미 데이터 지정, 삭제필요
-    setQuestions([
-      {
-        question_id: 1,
-        title: '시끌벅적한 술집보다 조용한 술집을 선호한다.',
-        attribute: 'IE',
-      },
-
-      {
-        question_id: 2,
-        title: '칵테일의 이름의 뜻이 궁금했던 적이 있다.',
-        attribute: 'NS',
-      },
-
-      {
-        question_id: 3,
-        title:
-          '특정 칵테일과 관련된 추억(또는 기억)이 음료 선정에 영향을 끼친다.',
-        attribute: 'FT',
-      },
-
-      {
-        question_id: 4,
-        title: '술을 마실때 새로운 사람들과 합석하는 것이 어렵지 않다.',
-        attribute: 'EI',
-      },
-
-      {
-        question_id: 5,
-        title: '시끌벅적한 술집보다 조용한 술집을 선호한다.',
-        attribute: 'IE',
-      },
-
-      {
-        question_id: 6,
-        title: '칵테일의 이름의 뜻이 궁금했던 적이 있다.',
-        attribute: 'NS',
-      },
-      {
-        question_id: 7,
-        title:
-          '특정 칵테일과 관련된 추억(또는 기억)이 음료 선정에 영향을 끼친다.',
-        attribute: 'FT',
-      },
-
-      {
-        question_id: 8,
-        title: '술을 마실때 새로운 사람들과 합석하는 것이 어렵지 않다.',
-        attribute: 'EI',
-      },
-    ]);
+    axiosRequest.get<IQuestionList>(requestUrl).then((res) => {
+      // console.log(res.data.data);
+      setQuestions(res.data.data);
+    });
   }, []);
+
+  // useEffect(() => {
+  //   console.log('questions -> ', questions);
+  // }, [questions]);
 
   const handleSubmit = () => {
     let data: string = answers
@@ -100,7 +53,7 @@ function Question() {
       .toString()
       .replaceAll(',', '');
 
-    console.log(data);
+    // console.log(data);
     if (data.indexOf('X') > -1) {
       console.log('잘못된 요청');
       return;
@@ -114,7 +67,7 @@ function Question() {
   };
 
   return (
-    <>
+    <AnimatedPage>
       <Template variant="질문">
         <ScrollProgress />
         <Wrapper>
@@ -140,7 +93,7 @@ function Question() {
           </SubmitContainer>
         </Wrapper>
       </Template>
-    </>
+    </AnimatedPage>
   );
 }
 

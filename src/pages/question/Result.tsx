@@ -1,15 +1,12 @@
-/* eslint-disable prettier/prettier */
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import Button from '../../components/button/Button';
 import Template from '../../components/common/Template';
 import { IResult } from '../../types/IResult';
 import { ReactComponent as AppStore } from '../../assets/icons/on_appstore_line.svg';
 import { ReactComponent as PlayStore } from '../../assets/icons/on_playstore_line.svg';
-import { IAnswer } from '../../types/IAnswer';
 import { axiosRequest } from '../../apis/axios';
-// import styled from 'styled-components';
+import AnimatedPage from '../../components/common/AnimatedPage';
 
 function Result() {
   const navigate = useNavigate();
@@ -17,71 +14,54 @@ function Result() {
   const [result, setResult] = useState<IResult>();
 
   useEffect(() => {
-    //!!!!실 서버 데이터!!!!
-    // console.log(state);
-    // axiosRequest
-    //   .post<IResult>('/landingpage', state)
-    //   .then((res) => setResult(res.data));
-
-    //더미 데이터 지정, 삭제필요
-    setResult({
-      cocktail: '갓마더',
-      cocktail_url:
-        'https://ohzu.s3.ap-northeast-2.amazonaws.com/%EA%B0%93%EB%A7%88%EB%8D%942.png',
-      desc: '평소 자신감이 넘치지만, 남에겐 자아도취로 보여지는 경우가 많다||평소 자신감이 넘치지만, 남에겐 자아도취로 보여지는 경우가 많다||평소 자신감이 넘치지만, 남에겐 자아도취로 보여지는 경우가 많다||평소 자신감이 넘치지만, 남에겐 자아도취로 보여지는 경우가 많다||평소 자신감이 넘치지만, 남에겐 자아도취로 보여지는 경우가 많다',
-      fit_cocktail: '깔루아밀크',
-      fit_cocktail_url:
-      "https://ohzu.s3.ap-northeast-2.amazonaws.com/%EA%B9%94%EB%A3%A8%EC%95%84+%EB%B0%80%ED%81%AC2.png",
-      unfit_cocktail: '로브로이',
-      unfit_cocktail_url:
-      "https://ohzu.s3.ap-northeast-2.amazonaws.com/%EB%A1%9C%EB%B8%8C+%EB%A1%9C%EC%9D%B42.png",
-    });
-
-    // try {
-    //   document.body.scrollTop = 0;
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    console.log(state);
+    axiosRequest
+      .post<IResult>('/landingpage/result', state)
+      .then((res) => setResult(res.data));
   }, []);
 
   return (
-    <Template variant="홈">
-      <Wrapper>
-        <Title>
-          <p>당신과 가장 일치하는 칵테일은</p>
-          <p>{result?.cocktail} 입니다~!</p>
-        </Title>
-        <ResultImage>
-          <img src={result?.cocktail_url}></img>
-        </ResultImage>
-        <Detail>
-          {result?.desc.split('||').map((elem, index) => {
-            return <li key={index}>{elem}</li>;
-          })}
-        </Detail>
-        <Title><p>다른 칵테일과의 궁합</p></Title>
-        <MatchingWrapper>
-          <Matching>
-            <p>천생연분</p>
-            <img src={result?.fit_cocktail_url}></img>
-            <p>{result?.fit_cocktail}</p>
-          </Matching>
-          <Matching>
-            <p>조금 안맞을수도..?</p>
-            <img src={result?.unfit_cocktail_url}></img>
-            <p>{result?.unfit_cocktail}</p>
-          </Matching>
-        </MatchingWrapper>
-        <SubTitle>
-          <p>모든 기능을 사용하고 싶다면</p>
-          <p>오쥬 다운 받으러 가기~</p>
-        </SubTitle>
-        <AppStoreWrapper>
-          <AppStore width={232} height={67}/>
-          <PlayStore width={232} height={67}/>
-        </AppStoreWrapper>
-      </Wrapper>
-    </Template>
+    <AnimatedPage>
+      <Template variant="홈">
+        <Wrapper>
+          <Title>
+            <p>당신과 가장 일치하는 칵테일은</p>
+            <p>{result?.cocktail} 입니다~!</p>
+          </Title>
+          <ResultImage>
+            <img src={result?.cocktail_url}></img>
+          </ResultImage>
+          <Detail>
+            {result?.desc.split('||').map((elem, index) => {
+              return <li key={index}>{elem}</li>;
+            })}
+          </Detail>
+          <Title>
+            <p>다른 칵테일과의 궁합</p>
+          </Title>
+          <MatchingWrapper>
+            <Matching>
+              <p>천생연분</p>
+              <img src={result?.fit_cocktail_url}></img>
+              <p>{result?.fit_cocktail}</p>
+            </Matching>
+            <Matching>
+              <p>조금 안맞을수도..?</p>
+              <img src={result?.unfit_cocktail_url}></img>
+              <p>{result?.unfit_cocktail}</p>
+            </Matching>
+          </MatchingWrapper>
+          <SubTitle>
+            <p>모든 기능을 사용하고 싶다면?</p>
+            {/* <p>오쥬 다운 받으러 가기~!</p> */}
+          </SubTitle>
+          <AppStoreWrapper>
+            <AppStore width={232} height={67} />
+            <PlayStore width={232} height={67} />
+          </AppStoreWrapper>
+        </Wrapper>
+      </Template>
+    </AnimatedPage>
   );
 }
 
@@ -186,7 +166,7 @@ const Matching = styled.div`
 
 const SubTitle = styled.div`
   & p {
-    ${({ theme }) => theme.typo.text.T_16_EB}
+    ${({ theme }) => theme.typo.text.T_18_EB}
     line-height: 130%;
     font-weight: 500;
     color: ${({ theme }) => theme.palette.main.white};
@@ -196,7 +176,7 @@ const SubTitle = styled.div`
 const AppStoreWrapper = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: column;
+  // flex-direction: column;
   gap: 10px;
   margin-top: 15px;
   margin-bottom: 100px;

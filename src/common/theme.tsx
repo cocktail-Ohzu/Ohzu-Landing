@@ -25,7 +25,7 @@ export const theme: DefaultTheme = {
         21
       )};line-height: 100%;font-weight: 800;`,
       HomeTitle_T_24_EB: `font-family: 'Pretendard';font-size: ${calcRem(
-        24
+        70
       )};line-height: 100%;font-weight: 800;`,
       HomeSubtitle_T_16_EB: `font-family: 'Pretendard';font-size: ${calcRem(
         16

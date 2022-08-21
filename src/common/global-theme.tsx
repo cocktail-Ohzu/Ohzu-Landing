@@ -24,7 +24,6 @@ export const GlobalStyle = createGlobalStyle`
     }
     #root {
       min-height: 100%;
-      transition: ${({ theme }) => theme.transition.onHover};
     }
     html {
       height: 100%;
