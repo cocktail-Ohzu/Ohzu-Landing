@@ -52,8 +52,8 @@ function Result() {
             </Matching>
           </MatchingWrapper>
           <SubTitle>
-            <p>모든 기능을 사용하고 싶다면</p>
-            <p>오쥬 다운 받으러 가기~</p>
+            <p>모든 기능을 사용하고 싶다면?</p>
+            {/* <p>오쥬 다운 받으러 가기~!</p> */}
           </SubTitle>
           <AppStoreWrapper>
             <AppStore width={232} height={67} />
@@ -166,7 +166,7 @@ const Matching = styled.div`
 
 const SubTitle = styled.div`
   & p {
-    ${({ theme }) => theme.typo.text.T_16_EB}
+    ${({ theme }) => theme.typo.text.T_18_EB}
     line-height: 130%;
     font-weight: 500;
     color: ${({ theme }) => theme.palette.main.white};
@@ -176,7 +176,7 @@ const SubTitle = styled.div`
 const AppStoreWrapper = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: column;
+  // flex-direction: column;
   gap: 10px;
   margin-top: 15px;
   margin-bottom: 100px;

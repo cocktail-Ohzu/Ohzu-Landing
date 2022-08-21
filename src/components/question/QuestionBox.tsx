@@ -83,6 +83,7 @@ const Title = styled.div`
   margin-bottom: 26px;
   & p {
     ${({ theme }) => theme.typo.text.T_16_EB}
+    line-height: 150%;
     font-weight: 200;
     color: ${({ theme }) => theme.palette.main.white};
   }
