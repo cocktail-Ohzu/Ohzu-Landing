@@ -45,13 +45,13 @@ function QuestionBox({
         </Title>
         <ButtonWrapper>
           <SelectButton
-            label={'예'}
+            label={'그렇다'}
             onClick={() => handleState(true)}
             isSelected={answer}
           ></SelectButton>
           <SizedBox />
           <SelectButton
-            label={'아니오'}
+            label={'아니다'}
             onClick={() => handleState(false)}
             isSelected={answer == null ? null : !answer}
           ></SelectButton>

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Button from '../../components/button/Button';
 import AnimatedPage from '../../components/common/AnimatedPage';
 import Template from '../../components/common/Template';
-import logo from '../../images/logo.png';
+import logo from '../../assets/images/logo.png';
 
 function Home() {
   const navigate = useNavigate();
