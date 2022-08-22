@@ -20,6 +20,7 @@ const CustomToastContainer = () => {
           line-height: 53px !important;
           font-family: 'Pretendard' !important;
           font-size: 16px !important;
+          user-select: none; !important;
         }
       `}</style>
       <ToastsContainer

@@ -4,11 +4,6 @@ import Result from './pages/question/Result';
 import Question from './pages/question/Question';
 import NotFound from './pages/common/NotFound';
 import { AnimatePresence } from 'framer-motion';
-import {
-  ToastsContainer,
-  ToastsContainerPosition,
-  ToastsStore,
-} from 'react-toasts';
 import CustomToastContainer from './components/common/CustomToastContainer';
 
 function App() {

@@ -46,7 +46,7 @@ function Question() {
       .map((elem, index) => {
         /* 선택 안함 */
         if (elem == -1) {
-          console.log('아직 선택 하지 않은 항목이 있음');
+          // console.log('아직 선택 하지 않은 항목이 있음');
         } else if (elem == 1) {
           /* 예 선택 */
           return questions[index].attribute[0] ?? 'X';
@@ -61,7 +61,7 @@ function Question() {
 
     // console.log(data);
     if (data.indexOf('X') > -1) {
-      console.log('잘못된 요청');
+      // console.log('잘못된 요청');
       useToast();
       return;
     }

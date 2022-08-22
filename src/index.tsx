@@ -1,8 +1,8 @@
+import App from './App';
 import ReactDOM from 'react-dom/client';
+import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './common/theme';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 import { GlobalStyle } from './common/global-theme';
 import { BrowserRouter } from 'react-router-dom';
 

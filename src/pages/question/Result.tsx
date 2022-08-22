@@ -47,7 +47,7 @@ function Result() {
       <Template variant="홈">
         <Wrapper>
           <Title>
-            <p>당신과 가장 일치하는 칵테일은</p>
+            <p>당신과 가장 잘 어울리는 칵테일은</p>
             <p>{result?.cocktail} 입니다~!</p>
           </Title>
           <ResultImage>
