@@ -1,32 +1,43 @@
 import styled from 'styled-components';
 import { ReactComponent as Instagram } from '../../assets/icons/instagram.svg';
-import { ReactComponent as AppStroe } from '../../assets/icons/appstore.svg';
+import { ReactComponent as AppStore } from '../../assets/icons/appstore.svg';
 import { ReactComponent as PlayStore } from '../../assets/icons/playstore.svg';
 import { ReactComponent as Github } from '../../assets/icons/github.svg';
+import { ToastsStore } from 'react-toasts';
 
 const Footer = () => {
+  const useToast = (msg: string) => {
+    ToastsStore.info(msg);
+  };
+
   return (
     <Wrapper>
       <p>© Ohzu. 2022 All rights reserved</p>
       <SecondRow>
-        {/* <a href="" target="_blank" rel="noreferrer noopener"> */}
-        <a>
-          <AppStroe />
+        <a
+          href="https://apps.apple.com/us/app/%EC%98%A4%EC%A5%AC/id1643634105"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <AppStore width={20} height={20} />
+        </a>
+        <a
+          href="https://play.google.com/store/apps/details?id=com.ohzu.ohzu"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <PlayStore width={20} height={20} />
         </a>
         {/* <a href="" target="_blank" rel="noreferrer noopener"> */}
-        <a>
-          <PlayStore />
-        </a>
-        {/* <a href="" target="_blank" rel="noreferrer noopener"> */}
-        <a>
-          <Instagram />
+        <a onClick={() => useToast('준비 중입니다 :)')}>
+          <Instagram width={20} height={20} />
         </a>
         <a
           href="https://github.com/cocktail-Ohzu/Ohzu-FrontEnd"
           target="_blank"
           rel="noreferrer noopener"
         >
-          <Github />
+          <Github width={20} height={20} />
         </a>
       </SecondRow>
     </Wrapper>
