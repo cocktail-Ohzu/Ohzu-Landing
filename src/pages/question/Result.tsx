@@ -13,8 +13,10 @@ function Result() {
   const navigate = useNavigate();
   const { state } = useLocation();
   const [result, setResult] = useState<IResult>();
-  const playstoreUrl = '';
-  const appstoreUrl = '';
+  const playstoreUrl =
+    'https://play.google.com/store/apps/details?id=com.ohzu.ohzu';
+  const appstoreUrl =
+    'https://apps.apple.com/kr/app/%EC%98%A4%EC%A5%AC/id1643634105';
 
   useEffect(() => {
     try {
@@ -87,16 +89,16 @@ function Result() {
               width={232}
               height={67}
               onClick={() => {
-                // openInNewTab(appstoreUrl);
-                useToast('준비 중입니다 :)');
+                openInNewTab(appstoreUrl);
+                // useToast('준비 중입니다 :)');
               }}
             />
             <PlayStore
               width={232}
               height={67}
               onClick={() => {
-                // openInNewTab(playstoreUrl);
-                useToast('준비 중입니다 :)');
+                openInNewTab(playstoreUrl);
+                // useToast('준비 중입니다 :)');
               }}
             />
           </AppStoreWrapper>
