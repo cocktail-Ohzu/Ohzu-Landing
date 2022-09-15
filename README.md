@@ -1,46 +1,98 @@
-# Getting Started with Create React App
+# 🍹 Ohzu
+---
+![main](https://user-images.githubusercontent.com/72291860/190209133-1e5cdc33-ab43-48c5-9562-117be0ce8046.png)
+![ohzu](https://user-images.githubusercontent.com/72291860/190209889-86e3aa37-f02f-4090-ad2b-e793553a2ee5.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+칵테일 고르기 힘들 때, 칵테일 추천 어플리케이션 오쥬 - 칵테일 MBTI
+<br>
+https://ohzu.site/
 
-## Available Scripts
+<br/>
 
-In the project directory, you can run:
 
-### `npm start`
+## 🥝 Services
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. 칵테일로 알아보는 MBTI 테스트를 통해 오쥬 앱 홍보
+2. 나의 성격과 맞는 칵테일을 알아보고 주변 사람들과 공유해보세요~
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<br/>
 
-### `npm test`
+## 📱 UI/UX
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![merge_from_ofoct (4)](https://user-images.githubusercontent.com/72291860/190306072-57018312-e96b-47fb-9a70-8d99433859fd.png)
 
-### `npm run build`
+<b> (칵테일 일러스트 이미지의 저작권은 Ohzu 및 Ohzu의 디자이너에게 있습니다) </b>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🔨 App Frameworks
+<div width=300>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+<img src="https://user-images.githubusercontent.com/72291860/190306397-3b384c35-4512-4390-ab92-f0c53d86e6a7.png" width="500px"></img>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+</div>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br/>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 📁 Project Structure
 
-## Learn More
+```
+├─apis
+├─assets
+│  ├─fonts
+│  ├─icons
+│  └─images
+├─common
+├─components
+│  ├─button
+│  ├─common
+│  ├─question
+│  └─scroll
+├─pages
+│  ├─common
+│  └─question
+└─types
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<br/>
+  
+## 😎 Ohzu Team
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<table>
+    <tr align="center">
+        <td><B>Frontend<B></td>
+        <td><B>Backend<B></td>
+        <td><B>Backend<B></td>
+        <td><B>Design<B></td>
+    </tr>
+    <tr align="center">
+        <td><B>노경민<B></td>
+        <td><B>이수진<B></td>
+        <td><B>서수경<B></td>
+        <td><B>이윤경<B></td>
+    </tr>
+    <tr align="center">
+        <td>
+            <img src="https://github.com/gengminy.png?size=100">
+            <br>
+            <a href="https://github.com/gengminy"><I>gengminy</I></a>
+        </td>
+        <td>
+            <img src="https://github.com/ssssujini99.png?size=100">
+            <br>
+            <a href="https://github.com/ssssujini99"><I>ssssujini99</I></a>
+        </td>
+        <td>
+            <img src="https://github.com/sukyeongs.png?size=100">
+            <br>
+            <a href="https://github.com/sukyeongs"><I>sukyeongs</I></a>
+        </td>
+        <td>
+          <img src="https://user-images.githubusercontent.com/72291860/190303601-2552f215-f0ac-4275-b161-1d56f40ffe3a.png" width="100px" height="100px">
+            <br>
+            <a href="https://www.instagram.com/dldbsrud0121/"><I>dldbsrud0121</I></a>
+        </td>
+    </tr>
+</table>
